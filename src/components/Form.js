@@ -10,6 +10,7 @@ export default function Form({ setInputText, setTodos, todos, inputText, setStat
 
   const submitTodoHandler = e => {
     e.preventDefault();
+    if (inputText === "") return;
     setTodos([...todos, { text: inputText, completed: false, id: uniqueId }]);
     setInputText("");
   };
@@ -20,7 +21,7 @@ export default function Form({ setInputText, setTodos, todos, inputText, setStat
 
   return (
     <form>
-      <input value={inputText} onChange={inputTextHandler} type="text" className="todo-input" />
+      <input value={inputText} onChange={inputTextHandler} placeholder="enter task" type="text" className="todo-input" />
       <button onClick={submitTodoHandler} className="todo-button" type="submit">
         <i className="fas fa-plus-square"></i>
       </button>
